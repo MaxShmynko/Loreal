@@ -1,3 +1,25 @@
 mixin form()
     +b('section').form
-        +e.wrap kkkklllk
+        +e.wrap
+            +e.foto
+                +e.number 1
+                +e.title Загрузите вертикальное фото с распущенными волосами. Портрет анфас, так чтобы были видны волосы по всей длине.
+                +e('label').loading-input-file
+                    input(type="file")
+                    | Загрузить
+                +e.warning ВАЖНО! Фото должно быть с хорошим дневным освещением, например напротив окна. Не подойдет: темное фото с искусственным светом, ни засвеченное против солнца.
+                    +e.example
+                        +e.example-pravelny Пример правильного фото
+                        +e.example-not-correct Пример неправильного фото
+
+            +e.expert
+                +e.number 2
+                +e.title Выберите эксперта, кому адресован вопрос
+                +e.radio-container
+                    +e.radio-container-btn
+                        +e('input').input(type="radio")
+                        | НАТАЛЬЯ НАЗАРОВ, ТРИХОЛОГ
+                    +e.radio-container-btn
+                        +e('input').input(type="radio")
+                        | АЛЕКСЕЙ ГОРБАТЮК, СТИЛИСТ
+

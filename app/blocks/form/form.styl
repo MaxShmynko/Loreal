@@ -1,5 +1,100 @@
 .form
+    width w(1440)
+    padding 0 w(180) 0 w(168)
+    margin 0 auto
+    font-family $ff-Montserrat
+    text-transform uppercase
 
     &__wrap
-        border-radius: 50px;
-        border: 1px solid #FC3288;
+        display flex
+        align-items center
+        flex-direction column
+        border-radius w(50)
+        border 1px solid $c-pinck
+        padding w(71) w(57) w(70) w(57)
+        // width w(1090)
+        // height w(1090)
+
+    &__foto,
+    &__expert
+        display flex
+        align-items center
+        flex-direction column
+
+
+    &__number
+        display flex
+        justify-content center
+        align-items center
+        color $c-white
+        width w(50)
+        height w(50)
+        background $c-pinck
+        border-radius 50%
+        font-size w(30)
+
+    &__title
+        color $c-pinck
+        font-size w(24)
+        line-height 160%
+        font-weight 500
+        text-align center
+        padding w(16) w(20)
+
+    &__loading-input-file
+        display flex
+        align-items center
+        justify-content center
+        cursor pointer
+        border 1px solid $c-pinck
+        border-radius w(40)
+        width: w(224)
+        height w(50)
+        font-weight 500
+        color $c-pinck
+        font-size w(16)
+        input
+            display none
+
+    &__warning
+        color $c-gray
+        line-height 160%
+        text-transform none
+        text-align center
+        padding w(12) w(100)
+
+    &__example
+        display flex
+        justify-content center
+        gap w(22)
+        cursor pointer
+
+    &__example-pravelny,
+    &__example-not-correct
+        text-decoration underline
+
+    &__expert
+        margin-top w(43)
+
+    &__radio-container
+        display flex
+        gap w(20)
+
+    &__radio-container-btn
+        display flex
+        align-items center
+        justify-content center
+        cursor pointer
+        width w(370)
+        height w(50)
+        border 1px solid $c-pinck
+        border-radius w(40)
+        font-weight 500
+        color $c-pinck
+        font-size w(16)
+    &__input
+        display none
+
+    &__input:checked + label
+        background-color $c-pinck
+
