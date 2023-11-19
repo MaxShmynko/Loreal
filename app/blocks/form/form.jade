@@ -10,16 +10,31 @@ mixin form()
                 +e.warning ВАЖНО! Фото должно быть с хорошим дневным освещением, например напротив окна. Не подойдет: темное фото с искусственным светом, ни засвеченное против солнца.
                     +e.example
                         +e.example-pravelny Пример правильного фото
+                        img(src='./images/pravelny.png' class="form__pravelny-img")
                         +e.example-not-correct Пример неправильного фото
+                        img(src='./images/not-correct.png' class="form__not-correct-img")
 
             +e.expert
                 +e.number 2
                 +e.title Выберите эксперта, кому адресован вопрос
                 +e.radio-container
                     +e.radio-container-btn
-                        +e('input').input(type="radio")
-                        | НАТАЛЬЯ НАЗАРОВ, ТРИХОЛОГ
+                        +e('input').input(type="radio" id="contactChoice1" class="your-radio-class" name="radio-group")
+                        +e('label').radio-container-btn-text(for="contactChoice1") НАТАЛЬЯ НАЗАРОВ, ТРИХОЛОГ
                     +e.radio-container-btn
-                        +e('input').input(type="radio")
-                        | АЛЕКСЕЙ ГОРБАТЮК, СТИЛИСТ
+                        +e('input').input(type="radio" id="contactChoice2" class="your-radio-class" name="radio-group")
+                        +e('label').radio-container-btn-text(for="contactChoice2") АЛЕКСЕЙ ГОРБАТЮК, СТИЛИСТ
+
+            +e.description
+                +e.number 3
+                +e.text-container
+                    +e('textarea').counter(placeholder="Кратко опишите ситуацию которая вас интересует" id="counter-text" rows="4" maxlength="300")
+                    +e.character-counter
+                        | Символов 
+                        +e('span')(id="character-counter") 0
+                        |  из 300
+            
+
+            +e('button').button(id="submit-button") Отправить
+
 

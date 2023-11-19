@@ -12,11 +12,11 @@
         border-radius w(50)
         border 1px solid $c-pinck
         padding w(71) w(57) w(70) w(57)
-        // width w(1090)
-        // height w(1090)
+        background: rgba(255, 255, 255, 0.50);
 
     &__foto,
-    &__expert
+    &__expert,
+    &__description
         display flex
         align-items center
         flex-direction column
@@ -40,6 +40,7 @@
         font-weight 500
         text-align center
         padding w(16) w(20)
+        display block
 
     &__loading-input-file
         display flex
@@ -53,14 +54,21 @@
         font-weight 500
         color $c-pinck
         font-size w(16)
+        transition 0.3s
         input
             display none
+
+        &:hover
+            background-color $c-pinck
+            color $c-white
+            
 
     &__warning
         color $c-gray
         line-height 160%
         text-transform none
         text-align center
+        font-size w(16)
         padding w(12) w(100)
 
     &__example
@@ -72,6 +80,23 @@
     &__example-pravelny,
     &__example-not-correct
         text-decoration underline
+        position relative
+
+
+    &__pravelny-img,
+    &__not-correct-img
+        border-radius w(40)
+        border 1px solid $c-black
+        position absolute
+        display none
+
+    &__pravelny-img
+        top w(220)
+        left w(640)
+
+    &__not-correct-img
+        top w(220)
+        right  w(650)
 
     &__expert
         margin-top w(43)
@@ -80,21 +105,88 @@
         display flex
         gap w(20)
 
-    &__radio-container-btn
+    &__radio-container-btn-text
         display flex
         align-items center
         justify-content center
         cursor pointer
         width w(370)
         height w(50)
-        border 1px solid $c-pinck
+        background-color $c-pinck
+        color $c-white
         border-radius w(40)
         font-weight 500
-        color $c-pinck
         font-size w(16)
+        transition 0.3s
+        &:hover
+            border 1px solid $c-pinck
+            color $c-pinck
+            background-color $c-white
+
     &__input
         display none
+        cursor pointer
 
-    &__input:checked + label
+    &__input:checked + &__radio-container-btn-text
+        display flex
+        align-items center
+        justify-content center
+        border 1px solid $c-pinck
+        color $c-pinck
+        background-color $c-white
+        width w(370)
+        height w(50)
+        border-radius w(40)
+        cursor pointer
+
+    &__description
+        position relative
+        margin-top w(50)
+
+    &__counter
+        margin-top w(20)
+        border 1px solid #FC3288
+        border-radius w(50)
+        width w(750)
+        height w(250)
+        padding w(30)
+        cursor pointer
+        transition 0.3s
+
+
+    &__counter::placeholder
+        color $c-pinck
+        font-size w(24)
+        line-height 160%
+        font-weight 500
+        text-align center
+        padding w(50) w(70)
+        text-transform uppercase
+
+    &__character-counter
+        position absolute
+        color $c-gray
+        font-size w(14)
+        bottom w(5)
+        left w(293)
+
+    &__button
+        margin-top w(50)
         background-color $c-pinck
+        color $c-white
+        width w(224)
+        height w(70)
+        border-radius w(40)
+        font-size w(14)
+        text-transform uppercase
+        border none
+        transition 0.3s
+        &:hover
+            border 1px solid $c-pinck
+            color $c-pinck
+            background-color $c-white
+
+
+
+
 
