@@ -4,6 +4,12 @@
     margin 0 auto
     font-family $ff-Montserrat
     text-transform uppercase
+    +below(920px)
+        width 100%
+        padding 0 wm(60) 0 wm(60)
+    +below(720px)
+        width 100%
+        padding 0 wm(10) 0 wm(10)
 
     &__wrap
         display flex
@@ -13,6 +19,9 @@
         border 1px solid $c-pinck
         padding w(71) w(57) w(70) w(57)
         background: rgba(255, 255, 255, 0.50);
+        +below(720px)
+            padding wm(35) wm(10)
+
 
     &__foto,
     &__expert,
@@ -32,6 +41,14 @@
         background $c-pinck
         border-radius 50%
         font-size w(30)
+        +below(920px)
+            width wm(15)
+            height wm(15)
+            font-size wm(8)
+        +below(720px)
+            width wm(50)
+            height wm(50)
+            font-size wm(30)
 
     &__title
         color $c-pinck
@@ -41,41 +58,73 @@
         text-align center
         padding w(16) w(20)
         display block
+        br
+            display none
+        +below(920px)
+            font-size wm(8)
+            padding wm(8) 0
+        +below(720px)
+            font-size wm(21)
+            padding wm(15) 0 wm(25) 0
+            br
+                display block
 
     &__loading-input-file
         display flex
         align-items center
         justify-content center
         cursor pointer
-        border 1px solid $c-pinck
         border-radius w(40)
-        width: w(224)
+        width w(224)
         height w(50)
         font-weight 500
-        color $c-pinck
+        color $c-white
+        background-color $c-pinck
         font-size w(16)
         transition 0.3s
         input
             display none
 
         &:hover
-            background-color $c-pinck
-            color $c-white
+            background-color $c-white
+            border 1px solid $c-pinck
+            color $c-pinck
+        
+        +below(920px)
+            width wm(70)
+            height wm(20)
+            border-radius wm(40)
+            font-size wm(6)
+
+        +below(720px)
+            width wm(224)
+            height wm(50)
+            border-radius wm(40)
+            font-size wm(16)
+
             
 
     &__warning
         color $c-gray
         line-height 160%
-        text-transform none
         text-align center
         font-size w(16)
         padding w(12) w(100)
+        +below(920px)
+            padding wm(10) 0
+            font-size wm(6)
+        +below(720px)
+            font-size wm(15)
+            padding wm(20) 0
 
     &__example
         display flex
         justify-content center
         gap w(22)
         cursor pointer
+        +below(720px)
+            flex-direction column
+            margin-top wm(10)
 
     &__example-pravelny,
     &__example-not-correct
@@ -89,14 +138,27 @@
         border 1px solid $c-black
         position absolute
         display none
+        width w(166)
+        height w(220)
+        +below(720px)
+            width wm(166)
+            height wm(220)
+            border-radius wm(20)
+
 
     &__pravelny-img
         top w(220)
-        left w(640)
+        left w(400)
+        +below(720px)
+            top wm(350)
+            left wm(80)
 
     &__not-correct-img
         top w(220)
-        right  w(650)
+        right w(400)
+        +below(720px)
+            top wm(350)
+            left wm(80)
 
     &__expert
         margin-top w(43)
@@ -104,6 +166,11 @@
     &__radio-container
         display flex
         gap w(20)
+        +below(920px)
+            flex-direction column
+        +below(720px)
+            flex-direction column
+            gap wm(14)
 
     &__radio-container-btn-text
         display flex
@@ -122,6 +189,19 @@
             border 1px solid $c-pinck
             color $c-pinck
             background-color $c-white
+        
+        +below(920px)
+            height wm(20)
+            font-size wm(6)
+            padding 0 wm(10)
+            width wm(180)
+
+        +below(720px)
+            width 100%
+            height wm(50)
+            border-radius wm(40)
+            font-size wm(14)
+            padding 0 wm(20)
 
     &__input
         display none
@@ -138,10 +218,24 @@
         height w(50)
         border-radius w(40)
         cursor pointer
+        +below(920px)
+            height wm(20)
+            font-size wm(6)
+            padding 0 wm(10)
+            width wm(180)
+
+        +below(720px)
+            width 100%
+            height wm(50)
+            border-radius wm(40)
+            font-size wm(14)
+            padding 0 wm(20)
 
     &__description
         position relative
         margin-top w(50)
+        +below(720px)
+            margin-top wm(50)
 
     &__counter
         margin-top w(20)
@@ -152,6 +246,11 @@
         padding w(30)
         cursor pointer
         transition 0.3s
+        +below(720px)
+            margin-top wm(20)
+            width wm(275)
+            height wm(230)
+            border-radius wm(10)
 
 
     &__counter::placeholder
@@ -162,13 +261,27 @@
         text-align center
         padding w(50) w(70)
         text-transform uppercase
+        +below(920px)
+            font-size wm(7)
+        +below(720px)
+            font-size wm(20)
+            padding wm(55) 0
 
     &__character-counter
         position absolute
         color $c-gray
         font-size w(14)
         bottom w(5)
-        left w(293)
+        left w(305)
+        text-transform none
+        font-family $ff-Inter-LightBETA
+        +below(920px)
+            font-size wm(5)
+            left wm(75)
+        +below(720px)
+            font-size wm(14)
+            left wm(65)
+            bottom wm(5)
 
     &__button
         margin-top w(50)
@@ -185,6 +298,20 @@
             border 1px solid $c-pinck
             color $c-pinck
             background-color $c-white
+
+        +below(920px)
+            width wm(70)
+            height wm(20)
+            border-radius wm(40)
+            font-size wm(6)
+
+        +below(720px)
+            width wm(224)
+            height wm(50)
+            border-radius wm(40)
+            font-size wm(16)
+            margin-top wm(20)
+
 
 
 

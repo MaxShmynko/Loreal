@@ -39,21 +39,24 @@ $(() => {
         }
     );
 
-    $('#submit-button').on('click', function () {
-        var formData = new FormData($('#your-form-id')[0]);
+    $("#submit-button").on("click", function () {
+        const formData = {
+            photo: $(".form__loading-input-file input").val(),
+            expert: $(".form__radio-container-btn input:checked").val(),
+            description: $("#counter-text").val()
+        };
 
         $.ajax({
-            type: 'POST',
-            url: '/save_data/',
+            type: "POST",
+            url: "https://podruzhka.woman.ru/save_data/",
             data: formData,
-            contentType: false,
-            processData: false, 
             success: function (response) {
-                console.log('Данные успешно отправлены:', response);
+                console.log("Данные успешно отправлены", response);
             },
             error: function (xhr, status, error) {
-                console.error('Ошибка отправки данных:', xhr, status, error);
+                console.error("Ошибка при отправке данных", xhr, status, error);
             }
         });
     });
+
 });
