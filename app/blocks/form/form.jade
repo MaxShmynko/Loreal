@@ -5,8 +5,9 @@ mixin form()
                 +e.number 1
                 +e.title Загрузите вертикальное фото с&nbsp;распущенными волосами. Портрет анфас, так чтобы были видны волосы <br> по&nbsp;всей длине.
                 +e('label').loading-input-file
-                    input(type="file")
+                    input(type="file" accept="image/*")
                     | Загрузить
+                +e.button-file-name
                 +e.warning ВАЖНО! Фото должно быть с&nbsp;хорошим дневным освещением, например напротив окна. Не&nbsp;подойдет: темное фото с&nbsp;искусственным светом, ни&nbsp;засвеченное против солнца.
                     +e.example
                         +e.example-pravelny Пример правильного фото
@@ -34,7 +35,7 @@ mixin form()
                         +e('span')(id="character-counter") 0
                         |  из 300
             
-
+            +e.error-message Заполните пожалуйста все поля формы
             +e('button').button(id="submit-button") Отправить
 
 

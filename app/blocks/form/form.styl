@@ -1,6 +1,5 @@
 .form
-    width w(1440)
-    padding 0 w(180) 0 w(168)
+    padding 0 w(160) 0 w(160)
     margin 0 auto
     font-family $ff-Montserrat
     text-transform uppercase
@@ -18,7 +17,7 @@
         border-radius w(50)
         border 1px solid $c-pinck
         padding w(71) w(57) w(70) w(57)
-        background: rgba(255, 255, 255, 0.50);
+        background rgba(255, 255, 255, 0.50);
         +below(720px)
             padding wm(35) wm(10)
 
@@ -283,6 +282,19 @@
             left wm(65)
             bottom wm(5)
 
+    &__error-message
+        color red 
+        font-size w(16)
+        margin-top w(50)
+        display none
+        line-height 160%
+        +below(920px)
+            font-size wm(6)
+        +below(720px)
+            font-size wm(10)
+            margin-top wm(20)
+
+
     &__button
         margin-top w(50)
         background-color $c-pinck
@@ -311,6 +323,30 @@
             border-radius wm(40)
             font-size wm(16)
             margin-top wm(20)
+
+    &__error
+        animation shake 0.5s
+        background-color $c-white
+        border 1px solid $c-pinck
+        color $c-pinck
+
+    &__error-text
+        border 1px solid red
+
+    &__error-text::placeholder
+        color red
+
+    &__button-file-name
+        color $c-pinck
+        font-size w(16)
+        margin-top w(20)
+        +below(920px)
+            font-size wm(6)
+            margin-top wm(10)
+        +below(720px)
+            font-size wm(16)
+        
+
 
 
 
