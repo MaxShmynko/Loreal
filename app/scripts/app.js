@@ -1,4 +1,5 @@
 import $ from "jquery";
+import slick from "slick-carousel";
 
 $(() => {
     const textarea = $('#counter-text');
@@ -100,4 +101,21 @@ $(() => {
     function getSelectedExpert() {
         return $(".form__radio-container-btn input:checked").index() + 1;
     }
+
+    $('.content__wrap__list').slick({
+        infinite: true, 
+        slidesToShow: 4, 
+        slidesToScroll: 1,
+        prevArrow: $('.content__wrap__button-prev'),
+        nextArrow: $('.content__wrap__button-next'),
+        responsive: [
+            {
+              breakpoint: 768,
+              settings: {
+                slidesToShow: 1,
+                slidesToScroll: 1,
+              }
+            },
+          ]
+      });
 });
