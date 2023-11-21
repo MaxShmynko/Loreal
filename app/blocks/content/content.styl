@@ -1,0 +1,122 @@
+.content
+    position relative
+
+    &__wrap__list
+        position relative
+        max-width w(1300)
+        margin 0 auto
+        +below(768px)
+            max-width 100%
+
+    &__wrap__button
+        position absolute
+        z-index 1
+        max-width w(1420)
+        width 100%
+        display flex
+        flex-direction row
+        justify-content space-between
+        top 50%
+        left 1%
+        +below(768px)
+            max-width 98%
+            left 0%
+            margin 0 w(10)
+
+    &__wrap__button-prev
+        width w(50)
+        height w(50)
+        cursor pointer
+        z-index 1
+        background-image url(/images/arrow-slider-prev.svg)
+        background-size cover
+        &:hover
+            background-image url(/images/arrow-slider-prev-hover.svg)
+            transition 1s
+        +below(768px)
+            width wm(50)
+            height wm(50)
+
+    &__wrap__button-next
+        width w(50)
+        height w(50)
+        cursor pointer
+        z-index 1
+        background-image url(/images/arrow-slider-next.svg)
+        background-size cover
+        &:hover
+            background-image url(/images/arrow-slider-next-hover.svg)
+            transition 1s
+        +below(768px)
+            width wm(50)
+            height wm(50)
+
+    &__item
+        display flex !important
+        flex-direction column !important
+        justify-content center !important
+        align-items center
+        &:hover
+            .content__list__card
+                border w(1) solid #FC3288
+                transition 0.5s
+            .content__list__card-title
+                color #FC3288
+                transition 0.5s
+            .content__list__card-link
+                color #FC3288
+                transition 0.5s
+
+    &__list__card
+        width w(300)
+        height w(380)
+        border-radius w(20)
+        border w(1) solid $c-black
+        background rgba(253, 249, 255, 0.80)
+        display flex
+        justify-content center 
+        align-items center
+        &:hover
+            border w(1) solid $c-pink
+        +below(768px)
+            width wm(235)
+            height wm(300)
+            border-radius wm(20)
+
+    &__list__card-img
+        max-width w(280)
+        height 100%
+        display flex
+        justify-content center
+        align-items center
+        img
+            width 100%
+        +below(768px)
+            max-width wm(215)
+
+    &__list__card-title
+        margin-top w(5)
+        color $c-black
+        text-align center
+        font-family $ff-Montserrat
+        font-size w(16)
+        font-weight 500
+        line-height w(19)
+        text-transform uppercase
+        +below(768px)
+            font-size wm(16)
+            line-height wm(19)
+
+    &__list__card-link
+        margin-top w(5)
+        color $c-black
+        text-align center
+        font-family $ff-Montserrat
+        font-size w(14)
+        font-weight 500
+        line-height w(16)
+        text-decoration underline
+        +below(768px)
+            font-size wm(14)
+            line-height wm(16)
+                
