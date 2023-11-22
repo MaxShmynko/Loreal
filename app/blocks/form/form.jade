@@ -5,7 +5,7 @@ mixin form()
                 +e.number 1
                 +e.title Загрузите вертикальное фото с&nbsp;распущенными волосами. Портрет анфас, так чтобы были видны волосы <br> по&nbsp;всей длине.
                 +e('label').loading-input-file
-                    input(type="file" accept="image/*")
+                    input(type="file" accept="image/*" id="file-img")
                     | Загрузить
                 +e.button-file-name
                 +e.warning ВАЖНО! Фото должно быть с&nbsp;хорошим дневным освещением, например напротив окна. Не&nbsp;подойдет: темное фото с&nbsp;искусственным светом, ни&nbsp;засвеченное против солнца.
@@ -20,10 +20,10 @@ mixin form()
                 +e.title Выберите эксперта, кому адресован вопрос
                 +e.radio-container
                     +e.radio-container-btn
-                        +e('input').input(type="radio" id="contactChoice1" class="your-radio-class" name="radio-group")
+                        +e('input').input(type="radio" id="contactChoice1" class="your-radio-class" name="radio-group" value="1")
                         +e('label').radio-container-btn-text(for="contactChoice1") НАТАЛЬЯ НАЗАРОВ, ТРИХОЛОГ
                     +e.radio-container-btn
-                        +e('input').input(type="radio" id="contactChoice2" class="your-radio-class" name="radio-group")
+                        +e('input').input(type="radio" id="contactChoice2" class="your-radio-class" name="radio-group" value="2")
                         +e('label').radio-container-btn-text(for="contactChoice2") АЛЕКСЕЙ ГОРБАТЮК, СТИЛИСТ
 
             +e.description
@@ -34,8 +34,21 @@ mixin form()
                         | Символов 
                         +e('span')(id="character-counter") 0
                         |  из 300
+                    +e.contacts
+                        +e('input').input-contacts(type="text" id="name" name="name" placeholder="Как вас зовут")
+                        +e('input').input-contacts(type="email" id="email" name="email" placeholder="Ваш email")
+                    
             
-            +e.error-message Заполните пожалуйста все поля формы
+            +e.approval
+                +e('input').approval-input(type="checkbox" id="scales" name="scales")
+                +e('label').approval-label(for="scales") я согласен с 
+                    +e('a').approval-label-link(href='#')  правилами конкурса и обработку персональных данных
+
+            
+            +e.pop-up
+                +e.pop-up-title Спасибо за ваш вопрос!
+                +e.pop-up-text  При выборе вашего вопроса, как победителя,<br>мы обязательно с вами свяжемся
             +e('button').button(id="submit-button") Отправить
+            +e.error-message Заполните все поля формы
 
 

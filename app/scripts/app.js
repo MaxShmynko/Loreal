@@ -46,62 +46,6 @@ $(() => {
         $(".form__button-file-name").text(fileName);
     });
 
-    $("#submit-button").on("click", function () {
-        var isValid = validateForm();
-    
-        if (isValid) {
-            $(".form__error-message").hide();
-    
-            var formData = new FormData();
-            formData.append("photo", $(".form__loading-input-file input")[0].files[0]);
-            formData.append("expert", getSelectedExpert());
-            formData.append("description", $("#counter-text").val());
-    
-            $.ajax({
-                type: "POST",
-                url: "https://podruzhka.woman.ru/save_data/",
-                data: formData,
-                contentType: false,
-                processData: false,
-                success: function (response) {
-                    console.log("Данные успешно отправлены", response);
-                },
-                error: function (xhr, status, error) {
-                    console.error("Ошибка при отправке данных", xhr, status, error);
-                }
-            });
-        } else {
-            $(".form__error-message").show();
-            animateError();
-        }
-    });
-    
-    function validateForm() {
-        var photo = $(".form__loading-input-file input").val();
-        var expert = $(".form__radio-container-btn input:checked").val();
-        var description = $("#counter-text").val();
-    
-        return photo !== "" && expert !== undefined && description !== "";
-    }
-    
-    function animateError() {
-        for (let i = 0; i < 8; i++) {
-            setTimeout(function () {
-                $(".form__loading-input-file, .form__radio-container-btn-text").toggleClass("form__error");
-                $("#counter-text, .form__counter").toggleClass("form__error-text");
-            }, i * 350);
-        }
-    
-        setTimeout(function () {
-            $(".form__loading-input-file, .form__radio-container-btn-text").removeClass("form__error");
-            $("#counter-text, .form__counter").removeClass("form__error-text");
-        }, 5000);
-    }
-    
-    function getSelectedExpert() {
-        return $(".form__radio-container-btn input:checked").index() + 1;
-    }
-
     $('.content__wrap__list').slick({
         infinite: true, 
         slidesToShow: 4, 
@@ -117,5 +61,126 @@ $(() => {
               }
             },
           ]
-      });
+    });
+
+
+    $(".form__pop-up").hide();
+    $(".form__error-message").hide();
+
+    $("#submit-button").on("click", function (e) {
+        e.preventDefault();
+
+        $(".form__loading-input-file, .form__radio-container-btn-text, .form__error-text").removeClass("form__error");
+        $(".form__error-text").removeClass("form__error-text");
+
+        let inputFile = $("#file-img");
+        let fileUploaded = inputFile[0].files.length > 0;
+        if (!fileUploaded) {
+            toggleErrorClass($(".form__loading-input-file"));
+        }
+
+        let radioChecked = $("input[name='radio-group']:checked").length > 0;
+        if (!radioChecked) {
+            toggleErrorClass($(".form__radio-container-btn-text"));
+        }
+
+
+        let nameInput = $("#name");
+        let emailInput = $("#email");
+        let textArea = $("#counter-text");
+        let fieldsFilled = nameInput.val() !== "" && emailInput.val() !== "" && textArea.val() !== "";
+        if (!fieldsFilled) {
+
+            if (nameInput.val() === "") {
+                nameInput.addClass("form__error-text");
+            }
+            if (emailInput.val() === "") {
+                emailInput.addClass("form__error-text");
+            }
+            if (textArea.val() === "") {
+                textArea.addClass("form__error-text");
+            }
+            toggleErrorClass([nameInput, emailInput, textArea]);
+        }
+
+
+        let approvalChecked = $("#scales").is(":checked");
+        if (!approvalChecked) {
+            toggleErrorClass($(".form__approval-label"));
+        }
+
+        let hasErrors = $(".form__error").length > 0;
+        let allFieldsFilled = fileUploaded && radioChecked && fieldsFilled && approvalChecked;
+
+        if (hasErrors || !allFieldsFilled) {
+            $(".form__error-message").text("Заполните все поля формы.").fadeIn();
+        } else {
+            $(".form__error-message").fadeOut();
+
+
+            let formData = new FormData();
+            formData.append("file", inputFile[0].files[0]);
+            formData.append("radio-group", $("input[name='radio-group']:checked").val());
+            formData.append("name", nameInput.val());
+            formData.append("email", emailInput.val());
+            formData.append("counter-text", textArea.val());
+            formData.append("approval", approvalChecked);
+
+            $.ajax({
+                url: "https://podruzhka.woman.ru/save_data/",
+                type: "POST",
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: function(response) {
+                    if (response.error_num === 0 && response.error === '') {
+                        console.log("Успешно отправлено:", response);
+                        $(".form__pop-up").fadeIn();
+                    } else {
+                        console.error("Ошибка при отправке:", response);
+                        $(".form__pop-up").text("Форма не отправлена =( " + response.error).fadeIn(); 
+                    }
+                },
+                error: function(error) {
+                    console.error("Ошибка отправки:", error);
+                    $(".form__pop-up").text("Произошла ошибка при отправке формы").fadeIn();
+                }
+            });
+        }
+    });
+
+    function toggleErrorClass(elements, iterations) {
+        // По умолчанию 1 итерация, если не указано иное
+        iterations = iterations || 1;
+
+        function toggle() {
+            if (elements instanceof jQuery) {
+                // Если elements является объектом jQuery
+                elements.addClass("form__error");
+                setTimeout(function() {
+                    elements.removeClass("form__error");
+                }, 500); 
+            } else {
+                $(elements).addClass("form__error");
+                setTimeout(function() {
+                    $(elements).removeClass("form__error");
+                }, 500); 
+            }
+        }
+
+        let counter = 0;
+        let intervalId = setInterval(function() {
+            toggle();
+            counter++;
+
+            if (counter === iterations * 2) {
+                clearInterval(intervalId);
+                $(".form__error-message").fadeIn(); 
+            }
+        }, 700); 
+    }
+
+    toggleErrorClass($(".form__error"), 3);
+    
+
 });

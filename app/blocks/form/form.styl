@@ -270,7 +270,7 @@
         position absolute
         color $c-gray
         font-size w(14)
-        bottom w(5)
+        bottom w(70)
         left w(305)
         text-transform none
         font-family $ff-Inter-LightBETA
@@ -280,23 +280,171 @@
         +below(720px)
             font-size wm(14)
             left wm(65)
-            bottom wm(5)
+            bottom wm(65)
+
+    &__input-contacts
+        border 1px solid #FC3288
+        border-radius w(50)
+        width w(373)
+        height w(60)
+        cursor pointer
+        padding w(20)
+        +below(720px)
+            display block
+            width 100%
+            height wm(30)
+            border-radius wm(8)
+
+    &__input-contacts::placeholder
+        color $c-gray
+        font-size w(14)
+        text-align center
+        +below(920px)
+            font-size wm(5)
+        +below(720px)
+            font-size wm(14)
+
+    &__approval
+        position relative
+        margin-top w(25)
+        +below(920px)
+            margin-top wm(30)
+        +below(720px)
+            margin-top wm(55)
+
+    &__approval-input:checked, 
+    &__approval-input:not(:checked)
+        position absolute
+        left -9999px
+
+    &__approval-input:checked + label:before, 
+    &__approval-input:not(:checked) + label:before
+        content ""
+        position absolute
+        left w(-20)
+        top w(-10)
+        border-radius 50%
+        border 1px solid $c-pinck
+        width w(30)
+        height w(30)
+        cursor pointer
+        +below(1200px)
+            width wm(7)
+            height wm(7)
+            left wm(-5)
+            top wm(-1)
+        +below(920px)
+            width wm(15)
+            height wm(15)
+            left wm(103)
+            top wm(-23)
+        +below(720px)
+            width wm(25)
+            height wm(25)
+            left wm(155)
+            top wm(-40)
+
+    &__approval-input:checked + label:after, 
+    &__approval-input:not(:checked) + label:after
+        content ""
+        position absolute
+        -webkit-transition all 0.2s ease
+        -moz-transition all 0.2s ease
+        -o-transition all 0.2s ease
+        transition all 0.2s ease
+        left w(-10)
+        top w(-2)
+        width w(10)
+        height w(9)
+        border-radius w(1)
+        border-left w(3.5) solid $c-pinck
+        border-bottom w(3.5) solid $c-pinck
+        -webkit-transform rotate(-45deg)
+        -moz-transform rotate(-45deg)
+        -o-transform rotate(-45deg)
+        -ms-transform rotate(-45deg)
+        transform rotate(-45deg)
+        cursor pointer
+        +below(1200px)
+            left wm(-2.7)
+            top wm(0.5)
+        +below(920px)
+            width wm(6)
+            height wm(6)
+            left wm(107.5)
+            top wm(-20)
+        +below(720px)
+            width wm(10)
+            height wm(9)
+            left wm(162)
+            top wm(-35)
+            border-left wm(3) solid $c-pinck
+            border-bottom wm(3) solid $c-pinck
+
+    &__approval-input:not(:checked) + label:after
+        opacity 0
+
+    &__approval-input:checked + label:after
+        opacity 1
+
+    &__approval-label
+        margin-left w(20)
+        color $c-pinck
+        font-size w(14)
+        text-align center
+        line-height 110%
+        a
+            color $c-pinck
+            text-align center
+
+        +below(920px)
+            font-size wm(8)
+            display block
+
+        +below(720px)
+            display block
+            font-size wm(12)
+            text-align center
+            padding 0 wm(31)
 
     &__error-message
-        color red 
-        font-size w(16)
-        margin-top w(50)
+        color $c-gray
+        font-size w(14)
         display none
         line-height 160%
+        text-transform none
         +below(920px)
-            font-size wm(6)
+            font-size wm(5)
         +below(720px)
             font-size wm(10)
+
+    &__pop-up
+        background-color $c-pinck
+        color $c-white
+        text-align center
+        border-radius w(50)
+        font-size w(24)
+        padding w(71) w(118)
+        width w(750)
+        text-transform none
+        margin-top w(25)
+        +below(720px)
+            width wm(270)
             margin-top wm(20)
+            font-size wm(14)
+            padding wm(30) wm(20)
+
+    &__pop-up-text
+        font-size w(20)
+        margin-top w(15)
+        line-height 140%
+        +below(720px)
+            font-size wm(9)
+            margin-top wm(10)
 
 
     &__button
-        margin-top w(50)
+        margin-top w(30)
         background-color $c-pinck
         color $c-white
         width w(224)
@@ -328,7 +476,7 @@
         animation shake 0.5s
         background-color $c-white
         border 1px solid $c-pinck
-        color $c-pinck
+        color red
 
     &__error-text
         border 1px solid red
@@ -345,7 +493,6 @@
             margin-top wm(10)
         +below(720px)
             font-size wm(16)
-        
 
 
 
